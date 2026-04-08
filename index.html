@@ -142,8 +142,8 @@
         .pill { background: rgba(255,255,255,0.03); color: var(--text-main); padding: 2px 12px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
 
         /* NEW LAYOUT CONTAINERS */
-        .studio-main { display: flex; flex-direction: column; gap: 20px; width: 100%; transition: all 0.4s ease; }
-        .side-bar { display: flex; flex-direction: column; gap: 20px; }
+        .studio-main { display: flex; flex-direction: column; gap: 20px; width: 100%; }
+        .side-bar { display: flex; flex-direction: column; gap: 20px; scrollbar-gutter: stable; }
 
         /* RESPONSIVE LANDSCAPE OPTIMIZATION */
         @media screen and (orientation: landscape) and (max-height: 600px) {
@@ -153,8 +153,8 @@
             header, footer { display: none; }
             
             .studio-main { flex-direction: row; align-items: stretch; gap: 15px; }
-            .rhythm-grid { flex: 1.4; margin-bottom: 0; padding: 10px; }
-            .side-bar { flex: 1; overflow-y: auto; max-height: 88vh; padding-right: 5px; display: flex; flex-direction: column; gap: 10px; }
+            .rhythm-grid { flex: 1; margin-bottom: 0; padding: 10px; min-width: 0; }
+            .side-bar { width: 380px; flex-shrink: 0; overflow-y: auto; max-height: 88vh; padding-right: 5px; display: flex; flex-direction: column; gap: 10px; }
             
             .control-panel { flex-direction: column; gap: 10px; margin-bottom: 0; }
             .control-section { padding: 10px; }
