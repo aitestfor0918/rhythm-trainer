@@ -146,31 +146,31 @@
         @media screen and (orientation: landscape) and (max-height: 600px) {
             body { padding: 5px; overflow-y: auto; height: auto; align-items: flex-start; }
             #root { max-width: 100%; padding: 0; }
-            .container { padding: 10px 15px; border-radius: 16px; max-height: none; min-height: 94vh; box-shadow: none; display: flex; flex-direction: column; }
-            header { display: block; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
+            .container { padding: 5px 10px; border-radius: 16px; max-height: none; min-height: 96vh; box-shadow: none; display: flex; flex-direction: column; }
+            header { display: block; margin-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px; }
             .studio-branding { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 15px; }
-            .brand-main { font-size: 1.1rem; }
-            .brand-sub { font-size: 0.7rem; letter-spacing: 2px; }
+            .brand-main { font-size: 1.0rem; }
+            .brand-sub { font-size: 0.65rem; letter-spacing: 2px; }
             footer { display: none; }
             
-            .studio-main { flex-direction: row; align-items: stretch; gap: 20px; flex: 1; }
-            .rhythm-grid { flex: 2; margin-bottom: 0; padding: 10px; min-width: 0; }
-            .side-bar { width: 500px; flex-shrink: 0; overflow-y: auto; max-height: 85vh; padding-right: 5px; display: flex; flex-direction: row; gap: 25px; align-items: flex-start; }
+            .studio-main { flex-direction: row; align-items: stretch; gap: 15px; flex: 1; }
+            .rhythm-grid { flex: 4; margin-bottom: 0; padding: 10px; min-width: 0; }
+            .side-bar { width: 260px; flex-shrink: 0; overflow-y: auto; max-height: 85vh; padding-right: 5px; display: flex; flex-direction: column; gap: 15px; align-items: stretch; }
             
-            .control-panel { flex: 1.6; gap: 10px; margin-bottom: 0; }
-            .control-section { padding: 10px; }
-            .visual-selector { grid-template-columns: repeat(4, 1fr); gap: 4px; }
-            .visual-selector.wide { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+            .control-panel { flex: none; gap: 10px; margin-bottom: 0; }
+            .control-section { padding: 8px; }
+            .visual-selector { grid-template-columns: repeat(3, 1fr); gap: 4px; }
+            .visual-selector.wide { grid-template-columns: repeat(4, 1fr); gap: 4px; }
             
-            .master-controls { flex: 1.2; flex-direction: column; gap: 12px; padding: 15px; align-items: center; border-radius: 12px; margin-left: 10px; }
+            .master-controls { flex: none; flex-direction: column; gap: 10px; padding: 12px; align-items: center; border-radius: 12px; margin-left: 0; width: 100%; }
             .bpm-station { width: 100%; text-align: center; }
-            .bpm-station .val { justify-content: center; font-size: 1.5rem; gap: 6px; }
+            .bpm-station .val { justify-content: center; font-size: 1.4rem; gap: 4px; }
             .bpm-station .label { font-size: 0.6rem; }
             input[type=range] { height: 3px; }
             input[type=range]::-webkit-slider-thumb { width: 16px; height: 16px; }
 
             .action-group { width: 100%; flex-direction: column; gap: 8px; }
-            button.control-btn { padding: 12px 10px; font-size: 0.7rem; width: 100%; letter-spacing: 1px; min-width: auto; }
+            button.control-btn { padding: 10px 8px; font-size: 0.65rem; width: 100%; letter-spacing: 1px; min-width: auto; }
         }
     </style>
 </head>
