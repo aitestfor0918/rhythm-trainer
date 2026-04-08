@@ -153,16 +153,24 @@
             .brand-sub { font-size: 0.65rem; letter-spacing: 2px; }
             footer { display: none; }
             
-            .studio-main { flex-direction: row; align-items: stretch; gap: 15px; flex: 1; }
-            .rhythm-grid { flex: 4; margin-bottom: 0; padding: 10px; min-width: 0; }
-            .side-bar { width: 260px; flex-shrink: 0; overflow-y: auto; max-height: 85vh; padding-right: 5px; display: flex; flex-direction: column; gap: 15px; align-items: stretch; }
+            .studio-main { display: grid; grid-template-columns: 1fr 260px; gap: 15px; flex: 1; min-height: 0; }
+            .rhythm-grid { margin-bottom: 0; padding: 10px; min-width: 0; overflow: hidden; }
+            .side-bar { 
+                width: 260px; min-width: 260px; max-width: 260px; 
+                flex-shrink: 0; overflow-y: auto; overflow-x: hidden; 
+                max-height: 85vh; padding-right: 5px; 
+                display: flex; flex-direction: column; gap: 15px; 
+                align-items: stretch; border-left: 1px solid rgba(255,255,255,0.03); 
+                touch-action: pan-y;
+                -webkit-overflow-scrolling: touch;
+            }
             
             .control-panel { flex: none; gap: 10px; margin-bottom: 0; }
             .control-section { padding: 8px; }
             .visual-selector { grid-template-columns: repeat(3, 1fr); gap: 4px; }
             .visual-selector.wide { grid-template-columns: repeat(4, 1fr); gap: 4px; }
             
-            .master-controls { flex: none; flex-direction: column; gap: 10px; padding: 12px; align-items: center; border-radius: 12px; margin-left: 0; width: 100%; }
+            .master-controls { flex: none; flex-direction: column; gap: 10px; padding: 12px; align-items: center; border-radius: 12px; margin-left: 0; width: 100%; box-sizing: border-box; }
             .bpm-station { width: 100%; text-align: center; }
             .bpm-station .val { justify-content: center; font-size: 1.4rem; gap: 4px; }
             .bpm-station .label { font-size: 0.6rem; }
