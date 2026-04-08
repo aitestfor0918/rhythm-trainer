@@ -43,18 +43,7 @@
         }
 
         header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
-        .studio-branding { font-size: 1.1rem; color: var(--primary-neon); font-weight: 900; letter-spacing: 2px; margin-bottom: 8px; text-shadow: 0 0 15px var(--border-glow); }
-        h1 { font-size: 0.65rem; letter-spacing: 4px; color: var(--text-dim); margin: 0; text-transform: uppercase; font-weight: 800; opacity: 0.7; }
-        
-        .audio-unlock-zone { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; }
-        .unlock-btn { 
-            padding: 5px 15px; font-size: 0.65rem; background: var(--accent-red); color: white; 
-            border: none; border-radius: 20px; cursor: pointer; font-weight: 800; 
-            letter-spacing: 1px; transition: all 0.3s;
-            animation: pulse-red 2s infinite;
-        }
-        .unlock-btn.ready { background: rgba(255,255,255,0.1); color: var(--text-dim); animation: none; pointer-events: none; }
-        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
+        .studio-branding { font-size: 1.4rem; color: var(--primary-neon); font-weight: 900; letter-spacing: 2px; margin-bottom: 0; text-shadow: 0 0 15px var(--border-glow); }
 
         /* RHYTHM DISPLAY GRID */
         .rhythm-grid {
@@ -99,12 +88,6 @@
         .control-section {
             flex: 1; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
             border-radius: 16px; padding: 15px; text-align: left;
-        }
-
-        .section-label {
-            font-size: 0.65rem; color: var(--text-dim); text-transform: uppercase;
-            letter-spacing: 2px; font-weight: 700; display: block; margin-bottom: 12px;
-            border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;
         }
 
         .visual-selector { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
@@ -169,9 +152,8 @@
             
             .control-panel { flex-direction: column; gap: 8px; margin-bottom: 0; }
             .control-section { padding: 8px; }
-            .section-label { font-size: 0.6rem; margin-bottom: 8px; }
-            .visual-selector { grid-template-columns: repeat(5, 1fr); gap: 3px; }
-            .visual-selector.wide { grid-template-columns: repeat(7, 1fr); gap: 3px; }
+            .visual-selector { grid-template-columns: repeat(6, 1fr); gap: 3px; }
+            .visual-selector.wide { grid-template-columns: repeat(8, 1fr); gap: 3px; }
             
             .master-controls { flex-direction: column; gap: 10px; padding: 10px; align-items: center; border-radius: 12px; }
             .bpm-station { width: 100%; text-align: center; }
@@ -308,13 +290,7 @@
             return (
                 <div className="container">
                     <header>
-                        <div className="studio-branding">張志宇薩克斯風教室</div>
-                        <h1>RHYTHM STUDIO v11 • MASTER CONTROL</h1>
-                        <div className="audio-unlock-zone">
-                            <button className={`unlock-btn ${audioReady ? 'ready' : ''}`} onClick={unlockAudio}>
-                                {audioReady ? '🔔 聲音已就緒 (Audio Ready)' : '🔔 點擊解鎖音訊 (Tap to Unlock Audio)'}
-                            </button>
-                        </div>
+                        <div className="studio-branding">張志宇薩克斯風教室節奏練習器</div>
                     </header>
 
                     <main className="studio-main">
@@ -337,24 +313,15 @@
                         <aside className="side-bar">
                             <div className="control-panel">
                                 <div className="control-section">
-                                    <span className="section-label">Core Essentials (a1-a9)</span>
-                                    <div className="visual-selector">
-                                        {PURE_FILES.map(f => (
-                                            <div key={f} className={`icon-btn ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
-                                                <img src={`images/${f}`} alt={f} />
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="control-section">
-                                    <span className="section-label" style={{color:'var(--accent-red)'}}>Rest Variants (Whitelist)</span>
                                     <div className="visual-selector wide">
-                                        {REST_WHITELIST.map(f => (
-                                            <div key={f} className={`icon-btn is-rest ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
-                                                <img src={`images/${f}`} alt={f} />
-                                            </div>
-                                        ))}
+                                        {ALL_ELIGIBLE.map(f => {
+                                            const isRest = REST_WHITELIST.includes(f);
+                                            return (
+                                                <div key={f} className={`icon-btn ${isRest ? 'is-rest' : ''} ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
+                                                    <img src={`images/${f}`} alt={f} />
+                                                </div>
+                                            );
+                                        })}
                                     </div>
                                 </div>
                             </div>
