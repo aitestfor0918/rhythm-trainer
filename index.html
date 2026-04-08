@@ -43,7 +43,18 @@
         }
 
         header { margin-bottom: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 15px; }
-        h1 { font-size: 0.8rem; letter-spacing: 6px; color: var(--text-dim); margin: 0; text-transform: uppercase; font-weight: 800; }
+        .studio-branding { font-size: 1.1rem; color: var(--primary-neon); font-weight: 900; letter-spacing: 2px; margin-bottom: 8px; text-shadow: 0 0 15px var(--border-glow); }
+        h1 { font-size: 0.65rem; letter-spacing: 4px; color: var(--text-dim); margin: 0; text-transform: uppercase; font-weight: 800; opacity: 0.7; }
+        
+        .audio-unlock-zone { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 10px; }
+        .unlock-btn { 
+            padding: 5px 15px; font-size: 0.65rem; background: var(--accent-red); color: white; 
+            border: none; border-radius: 20px; cursor: pointer; font-weight: 800; 
+            letter-spacing: 1px; transition: all 0.3s;
+            animation: pulse-red 2s infinite;
+        }
+        .unlock-btn.ready { background: rgba(255,255,255,0.1); color: var(--text-dim); animation: none; pointer-events: none; }
+        @keyframes pulse-red { 0% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 71, 87, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 71, 87, 0); } }
 
         /* RHYTHM DISPLAY GRID */
         .rhythm-grid {
@@ -193,6 +204,8 @@
             const [activeBeat, setActiveBeat] = useState(-1);
             const [countIn, setCountIn] = useState(null);
             
+            const [audioReady, setAudioReady] = useState(false);
+            
             const PURE_FILES = ["a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif"];
             const REST_WHITELIST = [
                 "a11.gif", "a21.gif", "a22.gif", "a43.gif", "a51.gif", 
@@ -208,11 +221,30 @@
             useEffect(() => {
                 player.current = new Tone.Player({ url: AUDIO_B64 }).toDestination();
                 generateRandomPattern();
-                return () => { stopPlayback(); };
+
+                // Periodic check for audio context state
+                const checkState = setInterval(() => {
+                    if (Tone.context.state === 'running') setAudioReady(true);
+                }, 1000);
+
+                return () => { 
+                    stopPlayback(); 
+                    clearInterval(checkState);
+                };
             }, []);
 
-            useEffect(() => { generateRandomPattern(); }, [selectedFiles]);
-            useEffect(() => { Tone.Transport.bpm.value = bpm; }, [bpm]);
+            const unlockAudio = async () => {
+                try {
+                    await Tone.start();
+                    // Play a short synth beep to verify
+                    const synth = new Tone.Synth().toDestination();
+                    synth.triggerAttackRelease("C5", "16n");
+                    setAudioReady(true);
+                    console.log("Audio Unlocked");
+                } catch (e) {
+                    console.error("Audio unlock failed", e);
+                }
+            };
 
             const generateRandomPattern = () => {
                 const pool = ALL_ELIGIBLE.filter(f => selectedFiles.has(f));
@@ -235,7 +267,11 @@
 
             const startPlayback = async () => {
                 if (sequence.length === 0) return;
-                if (Tone.context.state !== 'running') await Tone.start();
+                
+                // Double check audio unlock for iOS stability
+                if (Tone.context.state !== 'running') {
+                    await unlockAudio();
+                }
                 
                 Tone.Transport.stop(); Tone.Transport.cancel();
                 Tone.Transport.bpm.value = bpm;
@@ -272,7 +308,13 @@
             return (
                 <div className="container">
                     <header>
+                        <div className="studio-branding">張志宇薩克斯風教室</div>
                         <h1>RHYTHM STUDIO v11 • MASTER CONTROL</h1>
+                        <div className="audio-unlock-zone">
+                            <button className={`unlock-btn ${audioReady ? 'ready' : ''}`} onClick={unlockAudio}>
+                                {audioReady ? '🔔 聲音已就緒 (Audio Ready)' : '🔔 點擊解鎖音訊 (Tap to Unlock Audio)'}
+                            </button>
+                        </div>
                     </header>
 
                     <main className="studio-main">
