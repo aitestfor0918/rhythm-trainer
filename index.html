@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>節奏練習器 - Vercel Masters Edition</title>
+    <title>節奏練習器 - Slim Studio Edition</title>
     
     <script src="lib/react.min.js"></script>
     <script src="lib/react-dom.min.js"></script>
@@ -93,12 +93,11 @@
             border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 5px;
         }
 
-        .visual-selector { display: grid; grid-template-columns: repeat(11, 1fr); gap: 6px; }
+        .visual-selector { display: grid; grid-template-columns: repeat(9, 1fr); gap: 6px; }
 
         @media (max-width: 768px) {
-            .visual-selector { grid-template-columns: repeat(6, 1fr); }
+            .visual-selector { grid-template-columns: repeat(5, 1fr); }
             .rhythm-grid { padding: 8px; }
-            .section-label { font-size: 0.6rem; }
         }
 
         .icon-btn {
@@ -142,9 +141,10 @@
     <div id="root"></div>
 
     <script>
-        // WEB MANIFEST: Pre-generated file list
+        // SLIM WEB MANIFEST: Just the 22 essential patterns
         window.RHYTHM_FILES = [
-            "a1(四分音符).gif", "a1.gif", "a11.gif", "a145.gif", "a146.gif", "a147.gif", "a148.gif", "a149.gif", "a150.gif", "a2(八分音符).gif", "a2.gif", "a21.gif", "a22.gif", "a3(十六分音符).gif", "a3.gif", "a31.gif", "a32.gif", "a33.gif", "a34.gif", "a4(兩個十六分音符加1個八分音符).gif", "a4.gif", "a41.gif", "a42.gif", "a43.gif", "a5(一個八分音符加兩個十六分音符).gif", "a5.gif", "a51.gif", "a52.gif", "a53.gif", "a6(十六分音符加八分音符加十六分音符).gif", "a6.gif", "a61.gif", "a62.gif", "a63.gif", "a7(附點八分音符 + 十六分音符).gif", "a7.gif", "a71.gif", "a72.gif", "a8(十六分音符 + 附點八分音符) .gif", "a8.gif", "a81.gif", "a82.gif", "a9(三連音).gif", "a9.gif", "a91.gif", "a92.gif", "a93.gif", "black.GIF", "ea01.GIF", "ea011.GIF", "ea013.GIF", "ea015.GIF", "ea03.GIF", "ea05.GIF", "ea07.GIF", "ea09.GIF", "ea10.GIF", "ea11.GIF", "ea110.GIF", "ea111.GIF", "ea112.GIF", "ea113.GIF", "ea114.GIF", "ea115.GIF", "ea12.GIF", "ea13.GIF", "ea14.GIF", "ea15.GIF", "ea16.GIF", "ea17.GIF", "ea18.GIF", "ea19.GIF", "en00.GIF", "en01.GIF", "en010.GIF", "en011.GIF", "en012.GIF", "en013.GIF", "en014.GIF", "en015.GIF", "en02.GIF", "en03.GIF", "en04.GIF", "en05.GIF", "en06.GIF", "en07.GIF", "en08.GIF", "en09.GIF", "en10.GIF", "en11.GIF", "en110.GIF", "en111.GIF", "en112.GIF", "en113.GIF", "en114.GIF", "en115.GIF", "en12.GIF", "en13.GIF", "en14.GIF", "en15.GIF", "en16.GIF", "en17.GIF", "en18.GIF", "en19.GIF", "er0-big.gif", "er0.gif", "er1.gif", "er10.gif", "er11.gif", "er12.gif", "er13.gif", "er14.gif", "er15.gif", "er2.gif", "er3.gif", "er4.gif", "er5.gif", "er6.gif", "er7.gif", "er8.gif", "er9.gif", "na1.gif", "na2.gif", "na3.gif", "na4.gif", "na5.gif", "na6.gif", "na7.gif", "na8.gif", "na9.gif", "nax1.gif", "nax2.gif", "nax3.gif", "nax4.gif", "nax5.gif", "nax6.gif", "nax7.gif", "nax8.gif", "nax9.gif", "pa11.gif", "pa1451.gif", "pa1452.gif", "pa1453.gif", "pa1454.gif", "pa1461.gif", "pa1462.gif", "pa1463.gif", "pa1464.gif", "pa1471.gif", "pa1472.gif", "pa1473.gif", "pa1474.gif", "pa1481.gif", "pa1482.gif", "pa1483.gif", "pa1491.gif", "pa1493.gif", "pa1494.gif", "pa1501.gif", "pa1502.gif", "pa1504.gif", "pa21.gif", "pa23.gif", "pa31.gif", "pa32.gif", "pa33.gif", "pa34.gif", "pa41.gif", "pa42.gif", "pa43.gif", "pa51.gif", "pa53.gif", "pa54.gif", "pa61.gif", "pa62.gif", "pa64.gif", "pa71.gif", "pa74.gif", "pa81.gif", "pa82.gif", "pa91.gif", "pa92.gif", "pa93.gif", "pp00.GIF", "pp01.GIF", "pp010.GIF", "pp011.GIF", "pp012.GIF", "pp013.GIF", "pp014.GIF", "pp015.GIF", "pp02.GIF", "pp03.GIF", "pp04.GIF", "pp05.GIF", "pp06.GIF", "pp07.GIF", "pp08.GIF", "pp09.GIF", "pp10.GIF", "pp11.GIF", "pp110.GIF", "pp111.GIF", "pp112.GIF", "pp113.GIF", "pp114.GIF", "pp115.GIF", "pp12.GIF", "pp13.GIF", "pp14.GIF", "pp15.GIF", "pp16.GIF", "pp17.GIF", "pp18.GIF", "pp19.GIF", "pppp.GIF", "ra111.gif", "ra211.gif", "ra213.gif", "ra221.gif", "ra223.gif", "ra311.gif", "ra312.gif", "ra313.gif", "ra314.gif", "ra321.gif", "ra322.gif", "ra323.gif", "ra324.gif", "ra331.gif", "ra332.gif", "ra333.gif", "ra334.gif", "ra341.gif", "ra342.gif", "ra343.gif", "ra344.gif", "ra411.gif", "ra412.gif", "ra413.gif", "ra421.gif", "ra422.gif", "ra423.gif", "ra431.gif", "ra432.gif", "ra433.gif", "ra511.gif", "ra513.gif", "ra514.gif", "ra521.gif", "ra523.gif", "ra524.gif", "ra531.gif", "ra533.gif", "ra534.gif", "ra611.gif", "ra612.gif", "ra614.gif", "ra621.gif", "ra622.gif", "ra624.gif", "ra631.gif", "ra632.gif", "ra634.gif", "ra711.gif", "ra714.gif", "ra721.gif", "ra724.gif", "ra811.gif", "ra812.gif", "ra821.gif", "ra822.gif", "ra911.gif", "ra912.gif", "ra913.gif", "ra921.gif", "ra922.gif", "ra923.gif", "ra931.gif", "ra932.gif", "ra933.gif", "sa1.gif", "sa11.gif", "sa145.GIF", "sa146.GIF", "sa147.GIF", "sa148.GIF", "sa149.GIF", "sa150.GIF", "sa2.gif", "sa21.gif", "sa22.gif", "sa3.gif", "sa31.gif", "sa32.gif", "sa33.gif", "sa34.gif", "sa4.gif", "sa41.gif", "sa42.gif", "sa43.gif", "sa5.gif", "sa51.gif", "sa52.gif", "sa53.gif", "sa6.gif", "sa61.gif", "sa62.gif", "sa63.gif", "sa7.gif", "sa71.gif", "sa72.gif", "sa8.gif", "sa81.gif", "sa82.gif", "sa9.gif", "sa91.gif", "sa92.gif", "sa93.gif"
+            "a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif",
+            "a11.gif", "a21.gif", "a22.gif", "a43.gif", "a51.gif", "a91.gif", "a92.gif", "a93.gif", "a31.gif", "a32.gif", "a33.gif", "a34.gif", "a62.gif"
         ];
     </script>
 
@@ -161,11 +161,7 @@
             const [countIn, setCountIn] = useState(null);
             
             const PURE_FILES = ["a1.gif", "a2.gif", "a3.gif", "a4.gif", "a5.gif", "a6.gif", "a7.gif", "a8.gif", "a9.gif"];
-            const REST_WHITELIST = [
-                "a11.gif", "a21.gif", "a22.gif", "a43.gif", "a51.gif", 
-                "a91.gif", "a92.gif", "a93.gif", "a31.gif", "a32.gif", 
-                "a33.gif", "a34.gif", "a62.gif"
-            ];
+            const REST_WHITELIST = ["a11.gif", "a21.gif", "a22.gif", "a43.gif", "a51.gif", "a91.gif", "a92.gif", "a93.gif", "a31.gif", "a32.gif", "a33.gif", "a34.gif", "a62.gif"];
             const ALL_ELIGIBLE = [...PURE_FILES, ...REST_WHITELIST];
             const [selectedFiles, setSelectedFiles] = useState(new Set(PURE_FILES));
 
@@ -237,7 +233,7 @@
             return (
                 <div className="container">
                     <header>
-                        <h1>RHYTHM STUDIO • WEB DEPLOY</h1>
+                        <h1>RHYTHM STUDIO • SLIM WEB</h1>
                     </header>
 
                     <div className="rhythm-grid">
@@ -258,7 +254,7 @@
 
                     <div className="control-panel">
                         <div className="control-section">
-                            <span className="section-label">Core Essentials (a1-a9)</span>
+                            <span className="section-label">Core Essentials</span>
                             <div className="visual-selector">
                                 {PURE_FILES.map(f => (
                                     <div key={f} className={`icon-btn ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
@@ -269,8 +265,8 @@
                         </div>
 
                         <div className="control-section">
-                            <span className="section-label" style={{color:'var(--accent-red)'}}>Rest Variants (Whitelist)</span>
-                            <div className="visual-selector">
+                            <span className="section-label" style={{color:'var(--accent-red)'}}>Rest Variants</span>
+                            <div className="visual-selector" style={{gridTemplateColumns:'repeat(7, 1fr)'}}>
                                 {REST_WHITELIST.map(f => (
                                     <div key={f} className={`icon-btn is-rest ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
                                         <img src={`images/${f}`} alt={f} />
@@ -296,7 +292,7 @@
 
                     <footer>
                         <span>RHYTHM POOL: <span className="pill">{selectedFiles.size} Active</span></span>
-                        <span>WEB EDITION v1.0 <span className="pill">{isPlaying ? 'LIVE' : 'IDLE'}</span></span>
+                        <span>SLIM WEB v1.1 <span className="pill">{isPlaying ? 'LIVE' : 'IDLE'}</span></span>
                     </footer>
                 </div>
             );
