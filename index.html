@@ -140,6 +140,33 @@
 
         footer { margin-top: 20px; color: var(--text-dim); font-size: 0.65rem; display: flex; justify-content: center; gap: 40px; }
         .pill { background: rgba(255,255,255,0.03); color: var(--text-main); padding: 2px 12px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.05); }
+
+        /* NEW LAYOUT CONTAINERS */
+        .studio-main { display: flex; flex-direction: column; gap: 20px; width: 100%; transition: all 0.4s ease; }
+        .side-bar { display: flex; flex-direction: column; gap: 20px; }
+
+        /* RESPONSIVE LANDSCAPE OPTIMIZATION */
+        @media screen and (orientation: landscape) and (max-height: 600px) {
+            body { padding: 5px; overflow-y: auto; height: auto; align-items: flex-start; }
+            #root { max-width: 100%; padding: 0; }
+            .container { padding: 12px 15px; border-radius: 16px; max-height: none; box-shadow: none; }
+            header, footer { display: none; }
+            
+            .studio-main { flex-direction: row; align-items: stretch; gap: 15px; }
+            .rhythm-grid { flex: 1.4; margin-bottom: 0; padding: 10px; }
+            .side-bar { flex: 1; overflow-y: auto; max-height: 88vh; padding-right: 5px; display: flex; flex-direction: column; gap: 10px; }
+            
+            .control-panel { flex-direction: column; gap: 10px; margin-bottom: 0; }
+            .control-section { padding: 10px; }
+            .visual-selector { grid-template-columns: repeat(5, 1fr); gap: 4px; }
+            .visual-selector.wide { grid-template-columns: repeat(7, 1fr); gap: 4px; }
+            
+            .master-controls { flex-direction: column; gap: 12px; padding: 12px; align-items: center; }
+            .bpm-station { width: 100%; text-align: center; }
+            .bpm-station .val { justify-content: center; font-size: 1.8rem; }
+            .action-group { width: 100%; justify-content: center; }
+            button.control-btn { padding: 10px 20px; font-size: 0.75rem; flex: 1; }
+        }
     </style>
 </head>
 <body>
@@ -243,59 +270,63 @@
                         <h1>RHYTHM STUDIO v11 • MASTER CONTROL</h1>
                     </header>
 
-                    <div className="rhythm-grid">
-                        {countIn && <div className="count-in-text">{countIn}</div>}
-                        {[0, 1, 2, 3].map(rowIdx => (
-                            <div key={rowIdx} className="rhythm-row">
-                                {sequence.slice(rowIdx * 4, (rowIdx + 1) * 4).map((item, i) => {
-                                    const actualIdx = rowIdx * 4 + i;
-                                    return (
-                                        <div key={actualIdx} className={`block-slot ${countIn ? 'dimmed' : ''} ${activeBeat === actualIdx ? 'active' : ''}`}>
-                                            <img src={item.src} alt={item.label} />
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        ))}
-                    </div>
+                    <main className="studio-main">
+                        <div className="rhythm-grid">
+                            {countIn && <div className="count-in-text">{countIn}</div>}
+                            {[0, 1, 2, 3].map(rowIdx => (
+                                <div key={rowIdx} className="rhythm-row">
+                                    {sequence.slice(rowIdx * 4, (rowIdx + 1) * 4).map((item, i) => {
+                                        const actualIdx = rowIdx * 4 + i;
+                                        return (
+                                            <div key={actualIdx} className={`block-slot ${countIn ? 'dimmed' : ''} ${activeBeat === actualIdx ? 'active' : ''}`}>
+                                                <img src={item.src} alt={item.label} />
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                            ))}
+                        </div>
 
-                    <div className="control-panel">
-                        <div className="control-section">
-                            <span className="section-label">Core Essentials (a1-a9)</span>
-                            <div className="visual-selector">
-                                {PURE_FILES.map(f => (
-                                    <div key={f} className={`icon-btn ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
-                                        <img src={`images/${f}`} alt={f} />
+                        <aside className="side-bar">
+                            <div className="control-panel">
+                                <div className="control-section">
+                                    <span className="section-label">Core Essentials (a1-a9)</span>
+                                    <div className="visual-selector">
+                                        {PURE_FILES.map(f => (
+                                            <div key={f} className={`icon-btn ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
+                                                <img src={`images/${f}`} alt={f} />
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
-                            </div>
-                        </div>
+                                </div>
 
-                        <div className="control-section">
-                            <span className="section-label" style={{color:'var(--accent-red)'}}>Rest Variants (Whitelist)</span>
-                            <div className="visual-selector wide">
-                                {REST_WHITELIST.map(f => (
-                                    <div key={f} className={`icon-btn is-rest ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
-                                        <img src={`images/${f}`} alt={f} />
+                                <div className="control-section">
+                                    <span className="section-label" style={{color:'var(--accent-red)'}}>Rest Variants (Whitelist)</span>
+                                    <div className="visual-selector wide">
+                                        {REST_WHITELIST.map(f => (
+                                            <div key={f} className={`icon-btn is-rest ${selectedFiles.has(f) ? 'active' : ''}`} onClick={() => toggleFile(f)}>
+                                                <img src={`images/${f}`} alt={f} />
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div className="master-controls">
-                        <div className="bpm-station">
-                            <div className="val">{bpm}<span className="label">BPM</span></div>
-                            <input type="range" min="40" max="220" value={bpm} onChange={(e) => setBpm(parseInt(e.target.value))} />
-                        </div>
-                        
-                        <div className="action-group">
-                            <button className="control-btn btn-random" onClick={generateRandomPattern}>隨機生成</button>
-                            <button className={`control-btn btn-play ${isPlaying ? 'playing' : ''}`} onClick={() => isPlaying ? stopPlayback() : startPlayback()}>
-                                {isPlaying ? 'STOP' : 'PLAY'}
-                            </button>
-                        </div>
-                    </div>
+                            <div className="master-controls">
+                                <div className="bpm-station">
+                                    <div className="val">{bpm}<span className="label">BPM</span></div>
+                                    <input type="range" min="40" max="220" value={bpm} onChange={(e) => setBpm(parseInt(e.target.value))} />
+                                </div>
+                                
+                                <div className="action-group">
+                                    <button className="control-btn btn-random" onClick={generateRandomPattern}>隨機生成</button>
+                                    <button className={`control-btn btn-play ${isPlaying ? 'playing' : ''}`} onClick={() => isPlaying ? stopPlayback() : startPlayback()}>
+                                        {isPlaying ? 'STOP' : 'PLAY'}
+                                    </button>
+                                </div>
+                            </div>
+                        </aside>
+                    </main>
 
                     <footer>
                         <span>RHYTHM POOL: <span className="pill">{selectedFiles.size} Active</span></span>
