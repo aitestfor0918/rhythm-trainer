@@ -153,19 +153,24 @@
             header, footer { display: none; }
             
             .studio-main { flex-direction: row; align-items: stretch; gap: 15px; }
-            .rhythm-grid { flex: 1; margin-bottom: 0; padding: 10px; min-width: 0; }
-            .side-bar { width: 380px; flex-shrink: 0; overflow-y: auto; max-height: 88vh; padding-right: 5px; display: flex; flex-direction: column; gap: 10px; }
+            .rhythm-grid { flex: 1; margin-bottom: 0; padding: 5px; min-width: 0; }
+            .side-bar { width: 310px; flex-shrink: 0; overflow-y: auto; max-height: 90vh; padding-right: 5px; display: flex; flex-direction: column; gap: 8px; }
             
-            .control-panel { flex-direction: column; gap: 10px; margin-bottom: 0; }
-            .control-section { padding: 10px; }
-            .visual-selector { grid-template-columns: repeat(5, 1fr); gap: 4px; }
-            .visual-selector.wide { grid-template-columns: repeat(7, 1fr); gap: 4px; }
+            .control-panel { flex-direction: column; gap: 8px; margin-bottom: 0; }
+            .control-section { padding: 8px; }
+            .section-label { font-size: 0.6rem; margin-bottom: 8px; }
+            .visual-selector { grid-template-columns: repeat(5, 1fr); gap: 3px; }
+            .visual-selector.wide { grid-template-columns: repeat(7, 1fr); gap: 3px; }
             
-            .master-controls { flex-direction: column; gap: 12px; padding: 12px; align-items: center; }
+            .master-controls { flex-direction: column; gap: 10px; padding: 10px; align-items: center; border-radius: 12px; }
             .bpm-station { width: 100%; text-align: center; }
-            .bpm-station .val { justify-content: center; font-size: 1.8rem; }
-            .action-group { width: 100%; justify-content: center; }
-            button.control-btn { padding: 10px 20px; font-size: 0.75rem; flex: 1; }
+            .bpm-station .val { justify-content: center; font-size: 1.4rem; gap: 4px; }
+            .bpm-station .label { font-size: 0.6rem; }
+            input[type=range] { height: 3px; }
+            input[type=range]::-webkit-slider-thumb { width: 16px; height: 16px; }
+
+            .action-group { width: 100%; justify-content: center; gap: 8px; }
+            button.control-btn { padding: 10px 16px; font-size: 0.7rem; flex: 1; letter-spacing: 1px; min-width: auto; }
         }
     </style>
 </head>
