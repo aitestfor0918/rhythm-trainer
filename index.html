@@ -36,34 +36,35 @@
             height: 100dvh; overflow: hidden;
         }
 
-        #root { width: 100%; max-width: 1100px; padding: 8px; height: 100%; display: flex; align-items: center; justify-content: center; }
+        #root { width: 100%; max-width: 1100px; padding: 0; height: 100%; display: flex; align-items: center; justify-content: center; }
 
         .container {
             background: linear-gradient(145deg, #16213e, #0f172a);
             border: 1px solid rgba(255, 255, 255, 0.08);
             border-radius: 20px;
-            padding: 12px;
+            padding: 10px 12px 14px 12px;
             text-align: center;
             box-shadow: 0 40px 100px rgba(0,0,0,0.8);
             width: 100%;
-            max-height: 100%;
+            height: 100%;
+            max-height: 100dvh;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
-        header { margin-bottom: 12px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; flex-shrink: 0; }
+        header { margin-bottom: 8px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); padding-bottom: 8px; flex-shrink: 0; }
         .studio-branding { display: flex; flex-direction: column; gap: 2px; line-height: 1.1; }
         .brand-main { font-size: 1.15rem; color: var(--primary-neon); font-weight: 900; letter-spacing: 2px; text-shadow: 0 0 15px var(--border-glow); }
         .brand-sub { font-size: 0.75rem; color: var(--text-dim); font-weight: 700; letter-spacing: 4px; text-transform: uppercase; }
 
         /* RHYTHM DISPLAY GRID */
         .rhythm-grid {
-            display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px;
+            display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px;
             background: rgba(0,0,0,0.4); padding: 12px; border-radius: 20px;
             border: 1px solid rgba(255,255,255,0.05);
             box-shadow: inset 0 0 40px rgba(0,0,0,0.5);
-            flex: 1.2;
+            flex: 1.5;
             min-height: 0;
             justify-content: center;
         }
@@ -128,12 +129,12 @@
 
         /* PLAYBACK CONTROLS */
         .master-controls { 
-            display: flex; gap: 10px; align-items: stretch; justify-content: center; 
-            padding: 10px; background: rgba(0,0,0,0.2); border-radius: 12px; 
-            flex-shrink: 0; width: 140px; flex-direction: column;
+            display: flex; gap: 8px; align-items: stretch; justify-content: center; 
+            padding: 6px; background: rgba(0,0,0,0.2); border-radius: 12px; 
+            flex-shrink: 0; width: 115px; flex-direction: column;
         }
         .bpm-station { text-align: center; width: 100%; }
-        .bpm-station .val { font-size: 1.2rem; font-weight: 900; color: var(--primary-neon); display: flex; align-items: baseline; gap: 4px; justify-content: center; }
+        .bpm-station .val { font-size: 1.1rem; font-weight: 900; color: var(--primary-neon); display: flex; align-items: baseline; gap: 4px; justify-content: center; }
         .bpm-station .label { font-size: 0.5rem; color: var(--text-dim); text-transform: uppercase; font-weight: 600; }
 
         input[type=range] { width: 100%; height: 3px; background: rgba(255,255,255,0.1); border-radius: 2px; appearance: none; cursor: pointer; margin-top: 5px; }
@@ -142,7 +143,7 @@
         .action-group { display: flex; gap: 8px; flex-direction: column; width: 100%; }
 
         button.control-btn {
-            padding: 10px 8px; font-size: 0.65rem; font-weight: 900;
+            padding: 8px 4px; font-size: 0.6rem; font-weight: 900;
             border-radius: 10px; cursor: pointer; border: none;
             transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             text-transform: uppercase; letter-spacing: 1px;
@@ -161,7 +162,7 @@
 
         /* NEW LAYOUT CONTAINERS */
         .studio-main { display: flex; flex-direction: column; gap: 10px; width: 100%; flex: 1; min-height: 0; }
-        .side-bar { display: flex; flex-direction: row; gap: 10px; scrollbar-gutter: stable; flex: 0.8; min-height: 0; align-items: stretch; }
+        .side-bar { display: flex; flex-direction: row; gap: 10px; scrollbar-gutter: stable; flex: 1; min-height: 0; align-items: stretch; }
 
         /* RESPONSIVE LANDSCAPE OPTIMIZATION */
         @media screen and (orientation: landscape) and (max-height: 600px) {
@@ -381,10 +382,7 @@
                         </aside>
                     </main>
 
-                    <footer>
-                        <span>RHYTHM POOL: <span className="pill">{selectedFiles.size} Active</span></span>
-                        <span>SINGLE-PLAY MODE <span className="pill">{isPlaying ? 'LIVE' : 'IDLE'}</span></span>
-                    </footer>
+
                 </div>
             );
         };
